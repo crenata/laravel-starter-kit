@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use NotificationChannels\WebPush\HasPushSubscriptions;
 
 class BaseAuthenticatableModel extends Authenticatable {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletesTrait;
+    use HasApiTokens, HasFactory, HasPushSubscriptions, Notifiable, SoftDeletesTrait;
 
     public function save(array $options = []) {
         $time = time();
