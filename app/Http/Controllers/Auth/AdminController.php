@@ -19,10 +19,10 @@ class AdminController extends Controller {
 
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
-            "name" => "required",
-            "email" => "required|email|unique:$this->adminTable,email",
-            "password" => "required|min:8",
-            "confirm_password" => "required|same:password|min:8"
+            "name" => "required|string",
+            "email" => "required|string|email|unique:$this->adminTable,email",
+            "password" => "required|string|min:8",
+            "confirm_password" => "required|string|min:8|same:password"
         ]);
         if ($validator->fails()) return ResponseHelper::response(null, $validator->errors()->first(), 400);
 
@@ -40,8 +40,8 @@ class AdminController extends Controller {
 
     public function login(Request $request) {
         $validator = Validator::make($request->all(), [
-            "email" => "required|email|exists:$this->adminTable,email",
-            "password" => "required|min:8",
+            "email" => "required|string|email|exists:$this->adminTable,email",
+            "password" => "required|string|min:8",
         ]);
         if ($validator->fails()) return ResponseHelper::response(null, $validator->errors()->first(), 400);
 
