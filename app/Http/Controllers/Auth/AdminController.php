@@ -54,4 +54,10 @@ class AdminController extends Controller {
             "token" => $user->createToken(TokenConstant::TOKEN_NAME, [TokenConstant::AUTH_ADMIN])->plainTextToken
         ]);
     }
+
+    public function logout(Request $request) {
+        $request->user()->currentAccessToken()->delete();
+
+        return ResponseHelper::response();
+    }
 }

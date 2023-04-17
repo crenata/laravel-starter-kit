@@ -54,4 +54,10 @@ class UserController extends Controller {
             "token" => $user->createToken(TokenConstant::TOKEN_NAME, [TokenConstant::AUTH_USER])->plainTextToken
         ]);
     }
+
+    public function logout(Request $request) {
+        $request->user()->currentAccessToken()->delete();
+
+        return ResponseHelper::response();
+    }
 }
