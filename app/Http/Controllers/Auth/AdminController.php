@@ -47,7 +47,7 @@ class AdminController extends Controller {
 
         $user = AdminModel::where("email", $request->email)->first();
 
-        if (empty($user->id) || !Hash::check($request->password, $user->password)) return ResponseHelper::response(null, "The provided credentials are incorrect.", 401);
+        if (!Hash::check($request->password, $user->password)) return ResponseHelper::response(null, "The provided credentials are incorrect.", 401);
 
         return ResponseHelper::response([
             "user" => $user,
