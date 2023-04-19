@@ -17,7 +17,6 @@ class PasswordResetModel extends BaseModel {
      */
     protected $fillable = [
         "email",
-        "token",
-        "created_at"
+        "token"
     ];
 }

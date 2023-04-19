@@ -16,9 +16,11 @@ return new class extends Migration {
      */
     public function up() {
         Schema::create($this->getTable(new PasswordResetModel()), function (Blueprint $table) {
-            $table->string("email")->index();
+            $table->id();
+            $table->string("email");
             $table->string("token");
-            $table->bigInteger("created_at")->nullable();
+            $this->timestamps($table);
+            $this->softDeletes($table);
         });
     }
 
