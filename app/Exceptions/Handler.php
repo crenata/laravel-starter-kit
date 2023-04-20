@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception) {
-        return ResponseHelper::response(null, "Unauthenticated", 401);
+        return ResponseHelper::response(null, $exception->getMessage(), 401);
     }
 
     /**
@@ -71,6 +71,7 @@ class Handler extends ExceptionHandler
      * @throws \Throwable
      */
     public function render($request, Throwable $e) {
+        if ($e instanceof AuthenticationException) return $this->unauthenticated($request, new AuthenticationException());
         return ResponseHelper::response(null, $e->getMessage(), 500);
     }
 }
