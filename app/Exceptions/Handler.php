@@ -5,10 +5,10 @@ namespace App\Exceptions;
 use App\Helpers\ResponseHelper;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Throwable;
 
-class Handler extends ExceptionHandler
-{
+class Handler extends ExceptionHandler {
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -43,8 +43,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         $this->reportable(function (Throwable $e) {
             //
         });
@@ -71,7 +70,9 @@ class Handler extends ExceptionHandler
      * @throws \Throwable
      */
     public function render($request, Throwable $e) {
+        $code = 500;
         if ($e instanceof AuthenticationException) return $this->unauthenticated($request, new AuthenticationException());
-        return ResponseHelper::response(null, $e->getMessage(), 500);
+        if ($e instanceof MethodNotAllowedHttpException) $code = 405;
+        return ResponseHelper::response(null, $e->getMessage(), $code);
     }
 }
