@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Constants;
+namespace App\Enums;
 
 use App\Traits\EnumTrait;
 
