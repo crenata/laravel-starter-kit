@@ -1,7 +1,7 @@
 <?php
 
-use App\Constants\ApiEnum;
-use App\Constants\TokenEnum;
+use App\Enums\ApiEnum;
+use App\Enums\TokenEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

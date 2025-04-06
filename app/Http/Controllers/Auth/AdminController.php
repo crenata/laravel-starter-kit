@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Constants\TokenEnum;
+use App\Enums\TokenEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Models\AdminModel;

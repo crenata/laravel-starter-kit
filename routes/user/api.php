@@ -1,6 +1,6 @@
 <?php
 
-use App\Constants\ApiEnum;
+use App\Enums\ApiEnum;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix(ApiEnum::PREFIX_AUTH)

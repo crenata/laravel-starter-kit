@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Constants\TokenEnum;
+use App\Enums\TokenEnum;
 use App\Helpers\ResponseHelper;
 use Closure;
 use Illuminate\Http\Request;
