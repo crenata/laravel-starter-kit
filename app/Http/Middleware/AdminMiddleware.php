@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Constants\TokenConstant;
+use App\Constants\TokenEnum;
 use App\Helpers\ResponseHelper;
 use Closure;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AdminMiddleware {
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function handle(Request $request, Closure $next) {
-        if (auth()->user()->tokenCan(TokenConstant::AUTH_ADMIN)) return $next($request);
+        if (auth()->user()->tokenCan(TokenEnum::AUTH_ADMIN)) return $next($request);
         return ResponseHelper::response(null, "Unauthenticated", 401);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Constants\TokenConstant;
+use App\Constants\TokenEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
 use App\Models\AdminModel;
@@ -34,7 +34,7 @@ class AdminController extends Controller {
 
         return ResponseHelper::response([
             "user" => $user,
-            "token" => $user->createToken(TokenConstant::TOKEN_NAME, [TokenConstant::AUTH_ADMIN])->plainTextToken
+            "token" => $user->createToken(TokenEnum::TOKEN_NAME, [TokenEnum::AUTH_ADMIN])->plainTextToken
         ]);
     }
 
@@ -51,7 +51,7 @@ class AdminController extends Controller {
 
         return ResponseHelper::response([
             "user" => $user,
-            "token" => $user->createToken(TokenConstant::TOKEN_NAME, [TokenConstant::AUTH_ADMIN])->plainTextToken
+            "token" => $user->createToken(TokenEnum::TOKEN_NAME, [TokenEnum::AUTH_ADMIN])->plainTextToken
         ]);
     }
 

@@ -2,7 +2,11 @@
 
 namespace App\Constants;
 
-class HttpMethodConstant {
+use App\Traits\EnumTrait;
+
+class HttpMethodEnum {
+    use EnumTrait;
+
     const GET = "GET";
     const POST = "POST";
     const PUT = "PUT";

@@ -2,7 +2,11 @@
 
 namespace App\Constants;
 
-class ApiConstant {
+use App\Traits\EnumTrait;
+
+class ApiEnum {
+    use EnumTrait;
+
     const VERSION = "v1";
     const PREFIX_ADMIN = "admin";
     const PREFIX_USER = "user";
